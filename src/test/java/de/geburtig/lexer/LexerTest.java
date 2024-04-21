@@ -1,10 +1,7 @@
 package de.geburtig.lexer;
 
-import de.geburtig.parser.model.Position;
-import de.geburtig.parser.model.components.JavaClass;
-import de.geburtig.parser.model.components.Visibility;
-import de.geburtig.parser.model.tokens.*;
-import org.junit.jupiter.api.Disabled;
+import de.geburtig.lexer.util.Position;
+import de.geburtig.lexer.tokens.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

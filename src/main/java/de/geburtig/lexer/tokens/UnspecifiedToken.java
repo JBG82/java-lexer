@@ -1,6 +1,6 @@
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
+import de.geburtig.lexer.util.Position;
 
 /**
  * Repräsentiert einen Token, der zum Zeitpunkt seiner Erstellung noch nicht näher spezifiziert werden konnte.

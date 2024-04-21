@@ -1,6 +1,6 @@
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
+import de.geburtig.lexer.util.Position;
 
 /**
  * Repräsentiert einen Bezeichner auf unterster Code-Ebene (z.B. einen Variablen- oder Klassennamen).

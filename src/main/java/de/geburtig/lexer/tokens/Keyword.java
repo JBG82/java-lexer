@@ -1,6 +1,6 @@
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
+import de.geburtig.lexer.util.Position;
 
 import java.util.Set;
 

@@ -3,8 +3,8 @@
  */
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
-import de.geburtig.parser.util.PeekableIterator;
+import de.geburtig.lexer.util.Position;
+import de.geburtig.lexer.util.PeekableIterator;
 import lombok.Getter;
 import lombok.NonNull;
 

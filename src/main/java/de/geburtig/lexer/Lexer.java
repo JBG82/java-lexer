@@ -1,8 +1,8 @@
 package de.geburtig.lexer;
 
-import de.geburtig.parser.model.Position;
-import de.geburtig.parser.model.tokens.*;
-import de.geburtig.parser.util.PeekableIterator;
+import de.geburtig.lexer.util.PeekableIterator;
+import de.geburtig.lexer.util.Position;
+import de.geburtig.lexer.tokens.*;
 import lombok.Data;
 import lombok.NonNull;
 

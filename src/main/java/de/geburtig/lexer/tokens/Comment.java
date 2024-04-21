@@ -1,6 +1,6 @@
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
+import de.geburtig.lexer.util.Position;
 
 public abstract class Comment extends Token {
     public Comment(final String value, final Position position) {

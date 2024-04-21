@@ -1,9 +1,9 @@
 package de.geburtig.lexer.tokens;
 
-import de.geburtig.parser.model.Position;
+import de.geburtig.lexer.util.Position;
 import lombok.NonNull;
 
-import static de.geburtig.parser.model.tokens.Keyword.KEYWORDS;
+import static de.geburtig.lexer.tokens.Keyword.KEYWORDS;
 
 public class TokenCreator {
 
