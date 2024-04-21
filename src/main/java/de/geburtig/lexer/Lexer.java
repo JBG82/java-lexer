@@ -1,6 +1,6 @@
 package de.geburtig.lexer;
 
-import de.geburtig.lexer.util.PeekableIterator;
+import de.geburtig.utils.collection.PeekableIterator;
 import de.geburtig.lexer.util.Position;
 import de.geburtig.lexer.tokens.*;
 import lombok.Data;

@@ -4,7 +4,7 @@
 package de.geburtig.lexer.tokens;
 
 import de.geburtig.lexer.util.Position;
-import de.geburtig.lexer.util.PeekableIterator;
+import de.geburtig.utils.collection.PeekableIterator;
 import lombok.Getter;
 import lombok.NonNull;
 
