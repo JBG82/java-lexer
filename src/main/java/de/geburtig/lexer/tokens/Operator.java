@@ -14,6 +14,7 @@ public class Operator extends Token {
             "==", "!=", "<", ">", "<=", ">=",   // Vergleichsoperatoren
             "=", "+=", "-=", "*=", "/=",        // Zuweisungsoperatoren
             "&", "&&", "|", "||", "!",          // Logische Operatoren
+            "->",                               // "Arrow"-Operator
             "..."                               // Varargs-Operator
     );
 

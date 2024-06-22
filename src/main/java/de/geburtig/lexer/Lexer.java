@@ -57,8 +57,11 @@ public class Lexer {
         }
 
         // Danach versuchen sinnhaft zueinander zugehörige Tokens zusammenzuführen:
-        //  - Kombination aus UnspecifiedToken und GenericToken zu einem TypeToken zusammengefasst (z.B. "Set<String>")
-        //  - Kombination aus UnspecifiedToken/Keyword und Varargs-Operator wird zu einem TypeToken zusammengefasst (z.B. "String...", "int...")
+        //  - GenericTokens bilden (z.B. "<String>")
+        //  - IdentifierGroupTokens bilden (z.B. "java.util.ArrayList")
+        //  - Kombination aus UnspecifiedToken und GenericToken zu einem TypeToken zusammenfassen (z.B. "Set<String>")
+        //  - Kombination aus IdentifierGroupToken und GenericToken zu einem TypeToken zusammenfassen (z.B. "java.util.ArrayList<String>")
+        //  - Kombination aus UnspecifiedToken/Keyword und Varargs-Operator wird zu einem TypeToken zusammenfassen (z.B. "String...", "int...")
         List<Token> result = new ArrayList<>();
         boolean inAnnotation = false;
         List<Token> annotationTokens = null;
@@ -93,7 +96,7 @@ public class Lexer {
                         }
 
                         GenericToken genericToken = GenericToken.of(genericTokens);
-                        if (!result.isEmpty() && result.getLast() instanceof UnspecifiedToken) {
+                        if (!result.isEmpty() && (result.getLast() instanceof UnspecifiedToken || result.getLast() instanceof IdentifierGroupToken)) {
                             Token last = result.removeLast();
                             result.add(TypeToken.of(List.of(last, genericToken)));
                         } else {
@@ -153,6 +156,14 @@ public class Lexer {
                     tokens.addAll(List.of(iterator.next(), iterator.next()));
                 }
                 toInsert = IdentifierGroupToken.of(tokens);
+                if (genericDepth > 0) {
+                    // Dies ist der Fall, wenn ein IdentifierGroupToken innerhalb von spitzen Generic-Klammern gebildet
+                    // wurde. Sollte dies so sein, dann muss der neu gebildete IdentifierGroupToken auch in genericTokens
+                    // eingebaut werden!
+                    // TODO: Passt das immer so? Ich habe Zweifel...
+                    genericTokens.removeLast();
+                    genericTokens.add(toInsert);
+                }
             }
             result.add(toInsert);
         }
