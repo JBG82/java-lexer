@@ -13,7 +13,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <utils.version>0.1</utils.version>
+        <utils.version>0.2-SNAPSHOT</utils.version>
     </properties>
 
     <dependencies>

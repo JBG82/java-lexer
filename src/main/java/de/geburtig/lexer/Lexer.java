@@ -20,6 +20,7 @@ public class Lexer {
         // Dann versuchen Fließkomma-Literale zusammenzuführen (<Literal>.<Literal>, z.B. "634.23"). Hier macht die Gruppierung
         // von Tokens keinen Sinn, da keine Leerzeichen zwischen den Zahlen und dem Punkt erlaubt sind. Im Falle eines Treffers
         // werden die drei Tokens durch ein Literal-Token ersetzt.
+        // Innerhalb derselben while-Schleife werden auch ArrayTokens generiert (z.B. "[]" oder "[8]")
         int arrayDepth = 0;
         List<Token> arrayTokens = null;
         PeekableIterator<Token> iterator = new PeekableIterator<>(tokenList);
@@ -43,6 +44,7 @@ public class Lexer {
                     if (arrayDepth == 0) {
                         ArrayToken arrayToken = ArrayToken.of(arrayTokens);
                         for (int i = 1; i < arrayTokens.size(); ++i) {
+                            iterator.prev();
                             iterator.remove();
                         }
                         iterator.replace(arrayToken);

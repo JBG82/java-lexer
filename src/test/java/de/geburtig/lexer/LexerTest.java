@@ -263,6 +263,17 @@ class LexerTest {
     }
 
     @Test
+    void testArrays() {
+        // Java-Style array declaration
+        List<Token> result = Lexer.parse("int[] x;");
+        assertEquals(3, result.size());
+        assertEquals("int[],x,;", result.stream().map(Token::getValue).collect(joining(",")));
+        assertInstanceOf(ArrayToken.class, result.get(0));
+        assertInstanceOf(UnspecifiedToken.class, result.get(1));
+        assertInstanceOf(Separator.class, result.get(2));
+    }
+
+    @Test
     void testArrays1() {
         // Java-Style array declaration
         List<Token> result = Lexer.parse("int[] x = new int[5];");
@@ -312,7 +323,7 @@ class LexerTest {
     @Test
     void testArrays6() {
         List<Token> result = Lexer.parse("x[(int)(0.4 - 0.4)] = 3;");
-        assertEquals(4, result.size());
+        assertEquals(4, result.size(), result.stream().map(Token::getValue).collect(joining(",")));
         assertEquals("x[(int)(0.4 - 0.4)],=,3,;", result.stream().map(Token::getValue).collect(joining(",")));
         assertInstanceOf(ArrayToken.class, result.get(0));
         Token literal1 = ((GroupToken) result.get(0)).getTokens().get(6);
